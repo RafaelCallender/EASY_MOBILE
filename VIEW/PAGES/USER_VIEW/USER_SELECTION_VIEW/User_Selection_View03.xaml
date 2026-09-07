@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="EASYPROJECT01.EASY_MOBILE.VIEW.PAGES.USER_VIEW.USER_SELECTION_VIEW.User_Selection_View03"
+             Title="User_Selection_View03"
+             Shell.NavBarIsVisible="False">
+    <ScrollView>
+        <StackLayout VerticalOptions="Center"
+                     HorizontalOptions="Center">
+            <Border x:Name="border01">
+                <Image x:Name="image01"/>
+            </Border>
+            <Border x:Name="border02">
+                <Entry x:Name="entry01"></Entry>
+            </Border>
+            <Label x:Name="label01"></Label>
+            <Border x:Name="border03">
+                <Entry x:Name="entry02"></Entry>
+            </Border>
+            <Label x:Name="label02"></Label>
+            <Border x:Name="border04">
+                <DatePicker x:Name="datepicker01">
+                    
+                </DatePicker>
+            </Border>
+            <Label x:Name="label03"></Label>
+            <Border x:Name="border05">
+                <Entry x:Name="entry03"></Entry>
+            </Border>
+            <Label x:Name="label04"></Label>
+            <Border x:Name="border06">
+                <Entry x:Name="entry04"></Entry>
+            </Border>
+            <Label x:Name="label05"></Label>
+            <Border x:Name="border07">
+                <Entry x:Name="entry05"></Entry>
+            </Border>
+            <Label x:Name="label06"></Label>
+            <Border x:Name="border08">
+                <Entry x:Name="entry06"></Entry>
+            </Border>
+            <Label x:Name="label07"></Label>
+            <Border x:Name="border09">
+                <Entry x:Name="entry07"></Entry>
+            </Border>
+                  <Border x:Name="border10">
+                <Entry x:Name="entry08"></Entry>
+            </Border>
+            <Label x:Name="label08"></Label>
+            <Border x:Name="border11">
+                <Picker x:Name="picker01"></Picker>
+            </Border>
+            <Label x:Name="label09"></Label>
+            <Button x:Name="button01"></Button>
+            <Button x:Name="button02"></Button>
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

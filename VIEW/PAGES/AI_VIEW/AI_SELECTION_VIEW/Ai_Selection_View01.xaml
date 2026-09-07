@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="EASYPROJECT01.EASY_MOBILE.VIEW.PAGES.AI_VIEW.AI_SELECTION_VIEW.Ai_Selection_View01"
+             Title="Ai_Selection_View01"
+             Shell.NavBarIsVisible="False">
+
+    <ScrollView>
+        <StackLayout VerticalOptions="Center"
+                     HorizontalOptions="Center">
+            <Border x:Name="border01">
+                <Image x:Name="image01"/>
+            </Border>
+            <ImageButton x:Name="imagebutton01"/>
+            <Border x:Name="border02">
+                <Entry x:Name="entry01"/>
+            </Border>
+            <Label x:Name="label01"/>
+            <Border x:Name="border03">
+                <Picker x:Name="picker01"/>
+            </Border>
+            <Label x:Name="label02"/>
+            <Border x:Name="border04">
+                <Picker x:Name="picker02"/>
+            </Border>
+            <Label x:Name="label03"/>
+            <Border x:Name="border05">
+                <Picker x:Name="picker03"/>
+            </Border>
+            <Label x:Name="label04"/>
+            <Button x:Name="button01"/>
+            <Button x:Name="button02"/>
+        </StackLayout>
+    </ScrollView>
+
+</ContentPage>

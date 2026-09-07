@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="EASYPROJECT01.EASY_MOBILE.VIEW.PAGES.JOURNAL_VIEW.JOURNAL_MAIN_VIEW.Journal_Main_View01"
+             Title="Journal_Main_View01"
+             Shell.NavBarIsVisible="False">
+    <ScrollView>
+        <StackLayout VerticalOptions="Center"
+                     HorizontalOptions="Center">
+            <Border x:Name="border01">
+                <Image x:Name="image01"/>
+            </Border>
+            <Button x:Name="button01"></Button>
+            <Button x:Name="button02"></Button>
+            <Button x:Name="button03"></Button>
+            <Button x:Name="button04"></Button>
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="EASYPROJECT01.EASY_MOBILE.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:EASYPROJECT01.EASY_MOBILE.VIEW.PAGES.SELECTION_VIEW.SELECTION_MAIN_VIEW"
+    Title="EASYMOBILE">
+
+    <ShellContent
+        Title="Home"
+        ContentTemplate="{DataTemplate local:Selection_Main_View01}"
+        Route="Selection_Main_View01" />
+
+</Shell>

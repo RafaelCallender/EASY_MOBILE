@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="EASYPROJECT01.EASY_MOBILE.VIEW.PAGES.SELECTION_VIEW.SELECTION_MAIN_VIEW.Selection_Main_View01"
+             Title="Selection_Main_View01"
+             Shell.NavBarIsVisible="False">
+    <ScrollView>
+        <StackLayout VerticalOptions="Center"
+                     HorizontalOptions="Center">
+            <Border x:Name="border01">
+                <Image x:Name="image01"/>
+            </Border>
+            <Button x:Name="button01"></Button>
+            <Button x:Name="button02"></Button>
+            <Button x:Name="button03"></Button>
+            <Button x:Name="button04"></Button>
+            <Button x:Name="button05"></Button>
+            <Button x:Name="button06"></Button>
+            <Button x:Name="button07"></Button>
+            <Button x:Name="button08"></Button>
+            <Button x:Name="button09"></Button>
+            <Button x:Name="button10"></Button>
+            <Button x:Name="button11"></Button>
+            <Button x:Name="button12"></Button>
+            <Button x:Name="button13"></Button>
+            <Button x:Name="button14"></Button>
+            <Button x:Name="button15"></Button>
+            <Button x:Name="button16"></Button>
+        </StackLayout>
+    </ScrollView>
+</ContentPage>
