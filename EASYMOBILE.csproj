@@ -1,0 +1,146 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFrameworks>net10.0-android</TargetFrameworks>
+		<TargetFrameworks Condition="!$([MSBuild]::IsOSPlatform('linux'))">$(TargetFrameworks);net10.0-ios;net10.0-maccatalyst</TargetFrameworks>
+		<TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows'))">$(TargetFrameworks);net10.0-windows10.0.19041.0</TargetFrameworks>
+
+		<!-- Note for MacCatalyst:
+		The default runtime is maccatalyst-x64, except in Release config, in which case the default is maccatalyst-x64;maccatalyst-arm64.
+		When specifying both architectures, use the plural <RuntimeIdentifiers> instead of the singular <RuntimeIdentifier>.
+		The Mac App Store will NOT accept apps with ONLY maccatalyst-arm64 indicated;
+		either BOTH runtimes must be indicated or ONLY macatalyst-x64. -->
+		<!-- For example: <RuntimeIdentifiers>maccatalyst-x64;maccatalyst-arm64</RuntimeIdentifiers> -->
+
+		<OutputType>Exe</OutputType>
+		<RootNamespace>EASYMOBILE</RootNamespace>
+		<UseMaui>true</UseMaui>
+		<SingleProject>true</SingleProject>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+
+		<!-- Enable XAML source generation for faster build times and improved performance.
+		     This generates C# code from XAML at compile time instead of runtime inflation.
+		     To disable, remove this line.
+		     For individual files, you can override by setting Inflator metadata:
+		       <MauiXaml Update="MyPage.xaml" Inflator="Default" /> (reverts to defaults: Runtime for Debug, XamlC for Release)
+		       <MauiXaml Update="MyPage.xaml" Inflator="Runtime" /> (force runtime inflation) -->
+		<MauiXamlInflator>SourceGen</MauiXamlInflator>
+
+		<!-- Display name -->
+		<ApplicationTitle>EASYMOBILE</ApplicationTitle>
+
+		<!-- App Identifier -->
+		<ApplicationId>com.companyname.easymobile</ApplicationId>
+
+		<!-- Versions -->
+		<ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
+		<ApplicationVersion>1</ApplicationVersion>
+
+		<!-- To develop, package, and publish an app to the Microsoft Store, see: https://aka.ms/MauiTemplateUnpackaged -->
+		<WindowsPackageType>None</WindowsPackageType>
+
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">15.0</SupportedOSPlatformVersion>
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'maccatalyst'">15.0</SupportedOSPlatformVersion>
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">21.0</SupportedOSPlatformVersion>
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</SupportedOSPlatformVersion>
+		<TargetPlatformMinVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</TargetPlatformMinVersion>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<!-- App Icon -->
+				<MauiIcon Include="Resources\Images\dotnet_bot.png" />
+
+		<!-- Splash Screen -->
+		<MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#512BD4" BaseSize="128,128" />
+
+		<!-- Images -->
+		<MauiImage Include="Resources\Images\*" />
+				<MauiImage Remove="Resources\Images\dotnet_bot.png" />
+		
+		<!-- Custom Fonts -->
+		<MauiFont Include="Resources\Fonts\*" />
+
+		<!-- Raw Assets (also remove the "Resources\Raw" prefix) -->
+		<MauiAsset Include="Resources\Raw\**" LogicalName="%(RecursiveDir)%(Filename)%(Extension)" />
+		<MauiAsset Include="..\EASY_CALLENDER01\FILES\EXTERNAL\GGUF\GGUF_LOCAL\text_to_text_local01.gguf" LogicalName="text_to_text_local01.gguf" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="CommunityToolkit.Maui" Version="15.0.1" />
+		<PackageReference Include="LLamaSharp" Version="0.27.0" />
+		<PackageReference Include="Microsoft.Maui.Controls" Version="10.0.101" />
+		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="10.0.11" />
+		<PackageReference Include="Microsoft.Maui.Controls.Maps" Version="10.0.101" />
+		<PackageReference Include="SQLitePCLRaw.bundle_green" Version="2.1.11" />
+		<PackageReference Include="System.Security.Cryptography.Xml" Version="10.0.11" />
+	</ItemGroup>
+
+	<ItemGroup Condition="'$(TargetFramework)' == 'net10.0-android'">
+		<PackageReference Include="LLamaSharp.Backend.Cpu.Android" Version="0.27.0" />
+		<Content Remove="$(NuGetPackageRoot)llamasharp.backend.cpu.android/0.27.0/build/netstandard2.0/../../LLamaSharpRuntimes/**/*" />
+		<AndroidNativeLibrary Remove="$(NuGetPackageRoot)llamasharp.backend.cpu.android/0.27.0/build/netstandard2.0/../../LLamaSharpRuntimes/android-arm64-v8a/native/*.so" />
+		<AndroidNativeLibrary Include="Platforms\Android\jniLibs\arm64-v8a\*.so">
+			<Abi>arm64-v8a</Abi>
+			<Link>lib\arm64-v8a\%(Filename)%(Extension)</Link>
+		</AndroidNativeLibrary>
+	</ItemGroup>
+
+	<ItemGroup Condition="'$(TargetFramework)' != 'net10.0-android'">
+		<PackageReference Include="LLamaSharp.Backend.Cpu" Version="0.27.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\EASY_CALLENDER01\EASY_CALLENDER01.csproj" />
+	</ItemGroup>
+
+	<ItemGroup Condition="'$(TargetFramework)' == 'net10.0-android'">
+	  <AndroidResource Include="$(IntermediateOutputPath)google_maps_api_key.xml" Link="Resources\values\google_maps_api_key.xml" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiXaml Update="VIEW\PAGES\ClientPage01.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="VIEW\PAGES\ContactUsPage1.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="VIEW\PAGES\CreatePage01.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="VIEW\PAGES\ForgetPasswordPage1.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="VIEW\PAGES\ForgetUsernamePage1.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="VIEW\PAGES\MainPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="VIEW\PAGES\SelectionPage01.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="VIEW\PAGES\TestPage01.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="VIEW\POPUP\PopUpPage01.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	</ItemGroup>
+
+	<Target Name="GenerateGoogleMapsApiKeyResource" BeforeTargets="PrepareForBuild" Condition="'$(TargetFramework)' == 'net10.0-android'">
+	  <ReadLinesFromFile File="$(MSBuildProjectDirectory)\..\EASY_CALLENDER01\FILES\TEXT\TEXT_EMBEDDED\API.txt">
+	    <Output TaskParameter="Lines" ItemName="_ApiLines" />
+	  </ReadLinesFromFile>
+	  <ItemGroup>
+	    <_GoogleMapsApiKey Include="@(_ApiLines)" Condition="$([System.String]::Copy('%(_ApiLines.Identity)').Trim().StartsWith('AIza'))" />
+	  </ItemGroup>
+	  <Error Condition="'@(_GoogleMapsApiKey)' == ''" Text="No Google Maps API key was found in EASY_CALLENDER01/FILES/TEXT/TEXT_EMBEDDED/API.txt." />
+	  <PropertyGroup>
+	    <_GoogleMapsApiKeyValue>@(_GoogleMapsApiKey)</_GoogleMapsApiKeyValue>
+	  </PropertyGroup>
+	  <MakeDir Directories="$(IntermediateOutputPath)" />
+	  <WriteLinesToFile File="$(IntermediateOutputPath)google_maps_api_key.xml" Lines="&lt;resources&gt;;&lt;string name=&quot;google_maps_key&quot;&gt;$(_GoogleMapsApiKeyValue)&lt;/string&gt;;&lt;/resources&gt;" Overwrite="true" />
+	</Target>
+
+</Project>

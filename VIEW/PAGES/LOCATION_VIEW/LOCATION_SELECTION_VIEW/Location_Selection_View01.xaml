@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="EASYPROJECT01.EASY_MOBILE.VIEW.PAGES.LOCATION_VIEW.LOCATION_SELECTION_VIEW.Location_Selection_View01"
+             xmlns:maps="http://schemas.microsoft.com/dotnet/2021/maui/maps"
+             Title="Location_Selection_View01"
+             Shell.NavBarIsVisible="False">
+    <ScrollView>
+        <StackLayout VerticalOptions="Center"
+                     HorizontalOptions="Center">
+            <Border x:Name="border01">
+                <Image x:Name="image01"/>
+            </Border>
+            <Border x:Name="border02">
+                <maps:Map
+                    x:Name="MyMap"
+                    MapType="Street"
+                    IsShowingUser="true"/>
+            </Border>
+            <Border x:Name="border03">
+                <Entry x:Name="entry01"></Entry>
+            </Border>
+            <Label x:Name="label01"></Label>
+            <Border x:Name="border04">
+                <Picker x:Name="picker01"></Picker>
+            </Border>
+            <Label x:Name="label02"></Label>
+          <Border x:Name="border05">
+
+                <!-- LOCATION DATA DISPLAY -->
+
+                <Label 
+                        Text="LOCATION DATA"
+                        TextColor="#94A3B8"
+                        FontSize="13"
+                        FontAttributes="Bold"
+                        Margin="16,20,16,8"
+                        HorizontalOptions="Start"/>
+
+                <CollectionView x:Name="CollectionView01"
+                        ItemsSource="{Binding Items01}"
+                        SelectionMode="None"
+                        Margin="10,0,10,20">
+
+                    <CollectionView.ItemTemplate>
+
+                        <DataTemplate>
+
+                            <Border BackgroundColor="#111827"
+                                    Stroke="#293B52"
+                                    StrokeThickness="1"
+                                    StrokeShape="RoundRectangle 22"
+                                    Padding="18"
+                                    Margin="0,0,0,12">
+
+                                <VerticalStackLayout Spacing="16">
+
+                                    <!-- HEADER -->
+
+                                    <Grid ColumnDefinitions="Auto,*,Auto"
+                                            ColumnSpacing="12">
+
+                                        <Border BackgroundColor="#263449"
+                                                StrokeThickness="0"
+                                                StrokeShape="RoundRectangle 14"
+                                                Padding="12"
+                                                VerticalOptions="Center">
+
+                                            <Label Text="⌖"
+                                                    TextColor="#38BDF8"
+                                                    FontSize="26"
+                                                    HorizontalOptions="Center"
+                                                    VerticalOptions="Center"/>
+
+                                        </Border>
+
+                                        <VerticalStackLayout Grid.Column="1"
+                                                VerticalOptions="Center"
+                                                Spacing="3">
+
+                                            <Label Text="{Binding City}"
+                                                    TextColor="White"
+                                                    FontSize="19"
+                                                    FontAttributes="Bold"
+                                                    LineBreakMode="TailTruncation"/>
+
+                                            <Label Text="{Binding State}"
+                                                    TextColor="#94A3B8"
+                                                    FontSize="13"/>
+
+                                        </VerticalStackLayout>
+
+                                        <Border Grid.Column="2"
+                                                BackgroundColor="#123B35"
+                                                StrokeThickness="0"
+                                                StrokeShape="RoundRectangle 10"
+                                                Padding="8,5"
+                                                VerticalOptions="Center">
+
+                                            <Label Text="ACTIVE"
+                                                    TextColor="#34D399"
+                                                    FontSize="10"
+                                                    FontAttributes="Bold"/>
+
+                                        </Border>
+
+                                    </Grid>
+
+                                    <!-- DIVIDER -->
+
+                                    <BoxView HeightRequest="1"
+                                            BackgroundColor="#293B52"/>
+
+                                    <!-- COUNTRY -->
+
+                                    <Grid ColumnDefinitions="Auto,*"
+                                            ColumnSpacing="12">
+
+                                        <Label Text="COUNTRY"
+                                                TextColor="#64748B"
+                                                FontSize="11"
+                                                FontAttributes="Bold"
+                                                VerticalOptions="Center"/>
+
+                                        <Label Grid.Column="1"
+                                                Text="{Binding CountryName}"
+                                                TextColor="#E2E8F0"
+                                                FontSize="14"
+                                                HorizontalTextAlignment="End"/>
+
+                                    </Grid>
+
+                                    <!-- LONGITUDE -->
+
+                                    <Grid ColumnDefinitions="Auto,*"
+                                            ColumnSpacing="12">
+
+                                        <Label Text="LONGITUDE"
+                                                TextColor="#64748B"
+                                                FontSize="11"
+                                                FontAttributes="Bold"
+                                                VerticalOptions="Center"/>
+
+                                        <Label Grid.Column="1"
+                                                Text="{Binding Longitude}"
+                                                TextColor="#38BDF8"
+                                                FontSize="14"
+                                                HorizontalTextAlignment="End"/>
+
+                                    </Grid>
+
+                                    <!-- LATITUDE -->
+
+                                    <Grid ColumnDefinitions="Auto,*"
+                                            ColumnSpacing="12">
+
+                                        <Label Text="LATITUDE"
+                                                TextColor="#64748B"
+                                                FontSize="11"
+                                                FontAttributes="Bold"
+                                                VerticalOptions="Center"/>
+
+                                        <Label Grid.Column="1"
+                                                Text="{Binding Latitude}"
+                                                TextColor="#38BDF8"
+                                                FontSize="14"
+                                                HorizontalTextAlignment="End"/>
+
+                                    </Grid>
+
+                                </VerticalStackLayout>
+
+                            </Border>
+
+                        </DataTemplate>
+
+                    </CollectionView.ItemTemplate>
+
+                </CollectionView>
+            </Border>
+            <Button x:Name="button01"></Button>
+            <Button x:Name="button02"></Button>
+        </StackLayout>
+    </ScrollView>
+</ContentPage>
