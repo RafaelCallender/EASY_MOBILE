@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="EASYPROJECT01.EASY_MOBILE.VIEW.PAGES.DOCUMENT_VIEW.DOCUMENT_SELECTION_VIEW.Document_Selection_View01"
+             Title="Document_Selection_View01"
+             Shell.NavBarIsVisible="False">
+    <ScrollView>
+        <StackLayout VerticalOptions="Center"
+                     HorizontalOptions="Center">
+            <Border x:Name="border01">
+                <Image x:Name="image01"/>
+            </Border>
+            <Border x:Name="border02">
+                <Entry x:Name="entry01"></Entry>
+            </Border>
+            <Label x:Name="label01"></Label>
+            <Border x:Name="border03">
+                <Picker x:Name="picker01"></Picker>
+            </Border>
+            <Label x:Name="label02"></Label>
+            <Border x:Name="border04"
+                    BackgroundColor="#111820"
+                    Stroke="#2B3A49"
+                    StrokeThickness="1"
+                    Padding="18"
+                    Margin="0,18,0,0">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="18"/>
+                </Border.StrokeShape>
+
+                <VerticalStackLayout Spacing="16">
+                    <Grid ColumnDefinitions="*,Auto"
+                            ColumnSpacing="12">
+                        <VerticalStackLayout Spacing="3">
+                            <Label Text="DOCUMENT DETAILS"
+                                   FontSize="11"
+                                   FontAttributes="Bold"
+                                   TextColor="#7CA6D1"
+                                   CharacterSpacing="1.5"/>
+                            <Label Text="Selected file"
+                                   FontSize="24"
+                                   FontAttributes="Bold"
+                                   TextColor="#F4F7FB"/>
+                        </VerticalStackLayout>
+                        <Border Grid.Column="1"
+                                WidthRequest="42"
+                                HeightRequest="42"
+                                BackgroundColor="#1A2B3D"
+                                Stroke="#355574"
+                                StrokeThickness="1"
+                                VerticalOptions="Center">
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="12"/>
+                            </Border.StrokeShape>
+                            <Label Text="DOC"
+                                   FontSize="10"
+                                   FontAttributes="Bold"
+                                   TextColor="#8CC5FF"
+                                   HorizontalTextAlignment="Center"
+                                   VerticalTextAlignment="Center"/>
+                        </Border>
+                    </Grid>
+
+                    <BoxView HeightRequest="1"
+                            BackgroundColor="#2A3744"/>
+
+                    <CollectionView x:Name="CollectionView01"
+                                    SelectionMode="None">
+                        <CollectionView.EmptyView>
+                            <VerticalStackLayout Spacing="6"
+                                    Padding="0,24">
+                                <Label Text="No document selected"
+                                       FontSize="16"
+                                       FontAttributes="Bold"
+                                       TextColor="#DCE5F0"
+                                       HorizontalTextAlignment="Center"/>
+                                <Label Text="Choose a document to view its contents"
+                                       FontSize="12"
+                                       TextColor="#7F8B9D"
+                                       HorizontalTextAlignment="Center"/>
+                            </VerticalStackLayout>
+                        </CollectionView.EmptyView>
+
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <VerticalStackLayout Spacing="14">
+                                    <Label Text="{Binding filename}"
+                                           FontSize="17"
+                                           FontAttributes="Bold"
+                                           TextColor="#F1F5FA"
+                                           LineBreakMode="TailTruncation"/>
+
+                                    <VerticalStackLayout Spacing="5">
+                                        <Label Text="LOCATION"
+                                               FontSize="10"
+                                               FontAttributes="Bold"
+                                               TextColor="#71849B"
+                                               CharacterSpacing="1.2"/>
+                                        <Label Text="{Binding filelocation}"
+                                               FontSize="12"
+                                               TextColor="#B9C7D8"
+                                               LineBreakMode="CharacterWrap"/>
+                                    </VerticalStackLayout>
+
+                                    <VerticalStackLayout Spacing="5">
+                                        <Label Text="EXTRACTED CONTENT"
+                                               FontSize="10"
+                                               FontAttributes="Bold"
+                                               TextColor="#71849B"
+                                               CharacterSpacing="1.2"/>
+                                        <Border BackgroundColor="#0D211E"
+                                                Stroke="#245244"
+                                                StrokeThickness="1"
+                                                Padding="12">
+                                            <Border.StrokeShape>
+                                                <RoundRectangle CornerRadius="10"/>
+                                            </Border.StrokeShape>
+                                            <Label Text="{Binding filetext}"
+                                                   FontSize="13"
+                                                   TextColor="#B5E4CF"
+                                                   LineBreakMode="WordWrap"/>
+                                        </Border>
+                                    </VerticalStackLayout>
+                                </VerticalStackLayout>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </VerticalStackLayout>
+            </Border>
+
+            <Button x:Name="button01"></Button>
+            <Button x:Name="button02"></Button>
+
+        </StackLayout>
+    </ScrollView>
+</ContentPage>
