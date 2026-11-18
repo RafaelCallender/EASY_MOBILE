@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<toolkit:Popup 
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    x:Class="EASYPROJECT01.EASY_MOBILE.VIEW.POPUP.PopUpPage01">
+
+    <Border x:Name="border01">
+        <StackLayout Spacing="15" VerticalOptions="Center" HorizontalOptions="Center" HeightRequest="100" WidthRequest="100">
+            <Label x:Name="label01"></Label>
+            <Button x:Name="button01"></Button>
+
+        </StackLayout>
+    </Border>
+
+</toolkit:Popup>

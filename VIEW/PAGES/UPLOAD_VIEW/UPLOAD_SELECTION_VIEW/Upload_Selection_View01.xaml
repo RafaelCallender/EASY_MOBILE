@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="EASYPROJECT01.EASY_MOBILE.VIEW.PAGES.UPLOAD_VIEW.UPLOAD_SELECTION_VIEW.Upload_Selection_View01"
+             Title="Upload_Selection_View01"
+             Shell.NavBarIsVisible="False">
+    <ScrollView>
+        <StackLayout VerticalOptions="Center"
+                HorizontalOptions="Center">
+            <Border x:Name="border01">
+                <Image x:Name="image01"/>
+            </Border>
+            <ImageButton x:Name="imagebutton01"></ImageButton>
+            <Border x:Name="border02">
+                <Entry x:Name="entry01"></Entry>
+            </Border>
+            <Label x:Name="label01"></Label>
+            <Border x:Name="border03">
+                <Entry x:Name="entry02"></Entry>
+            </Border>
+            <Label x:Name="label02"></Label>
+            <Border x:Name="border04">
+                <Picker x:Name="picker01"></Picker>
+            </Border>
+            <Label x:Name="label03"></Label>
+            <Button x:Name="button01"></Button>
+            <Button x:Name="button02"></Button>
+            <Button x:Name="button03"></Button>
+        </StackLayout>
+    </ScrollView>
+</ContentPage>
