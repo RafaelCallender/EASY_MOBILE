@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="EASYPROJECT01.EASY_MOBILE.VIEW.PAGES.LANGUAGE_VIEW.LANGUAGE_SELECTION_VIEW.Language_Selection_View01"
+             Title="Language_Selection_View01"
+                 Shell.NavBarIsVisible="False">
+    <ScrollView>
+        <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
+            <Border x:Name="border01">
+                <Image x:Name="image01"/>
+            </Border>
+            <Border x:Name="border02">
+                <Entry x:Name="entry01"></Entry>
+            </Border>
+            <Label x:Name="label01"></Label>    
+            <Border x:Name="border03">
+                <Picker x:Name="picker01"></Picker>
+            </Border>
+            <Label x:Name="label02"></Label>    
+            <Button x:Name="button01"></Button>
+            <Button x:Name="button02"></Button>
+        </StackLayout>
+    </ScrollView>
+</ContentPage>
